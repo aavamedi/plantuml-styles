@@ -1,36 +1,47 @@
 @startuml
 
 '******* AAVA Styles *************
+' AAVA COLORS
+!define sininen 239ed5
+!define vaaleansininen 93d4f1
+!define haaleasininen c7e7f4
+!define vihrea 9fcd40
+!define vaaleanvihrea d8e8af
+!define haaleavihrea e9f4d4
+!define lila c53196
+!define vaalealila e7abd3
+!define haalealila f0cae4
+
 ' HEADER
 header '<img:https://www.aava.fi/sites/default/files/field_data/page/Aava_pystylogo_cmyk.jpg{scale=0.1}>
 
 ' TITLE STYLES
 skinparam TitleFontSize 30
-skinparam TitleFontColor #1f9ad7
+skinparam TitleFontColor #sininen
 
 ' SWIMLANE STYLES
 skinparam SwimlaneTitleFontSize 20
-skinparam SwimlaneTitleBackgroundColor #1f9ad7
+skinparam SwimlaneTitleBackgroundColor #sininen
 skinparam SwimlaneTitleFontColor white
 skinparam SwimlaneBorderThickness 1
 
 ' ACTIVITY STYLES
 skinparam ActivityBorderColor black
-skinparam ActivityBackgroundColor #c7e7f4
-skinparam ActivityDiamondBackgroundColor #e9f4d4
+skinparam ActivityBackgroundColor #haaleasininen
+skinparam ActivityDiamondBackgroundColor #haaleavihrea
 skinparam ActivityDiamondBorderColor black
 
 'SEQUENCE STYLES
 skinparam actorStyle awesome
-skinparam ActorBackgroundColor #93d4f1
-skinparam ActorBorderColor #239ed5
-skinparam ParticipantBackgroundColor #93d4f1
-skinparam ParticipantBorderColor #239ed5
+skinparam ActorBackgroundColor #vaaleansininen
+skinparam ActorBorderColor #sininen
+skinparam ParticipantBackgroundColor #vaaleansininen
+skinparam ParticipantBorderColor #sininen
 skinparam SequenceLifeLineBorderColor black
 
 'DATAMODEL
-!define table(x) class x << (T,#239ed5) >> 
-!define view(x) class x << (V,#93d4f1) >>
+!define table(x) class x << (T,#sininen) >> 
+!define view(x) class x << (V,#vaaleansininen) >>
 skinparam classarrowcolor gray
 skinparam ClassBackgroundColor white
 skinparam ClassBorderColor black
@@ -42,7 +53,7 @@ skinparam ClassBorderColor black
 '}
 
 'COMMON STYLES
-skinparam ArrowColor #1f9ad7
+skinparam ArrowColor #sininen
 skinparam Shadowing false
 skinparam NoteBackgroundColor white
 skinparam NoteBorderColor black
