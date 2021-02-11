@@ -1,0 +1,18 @@
+@startuml
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/master/dist
+!includeurl AWSPuml/AWSCommon.puml
+!includeurl AWSPuml/AWSSimplified.puml
+!includeurl AWSPuml/General/Users.puml
+!includeurl AWSPuml/Mobile/APIGateway.puml
+!includeurl AWSPuml/SecurityIdentityAndCompliance/all.puml
+!includeurl AWSPuml/NetworkingAndContentDelivery/all.puml
+
+!includeurl AWSPuml/Compute/all.puml
+!includeurl AWSPuml/Database/all.puml
+!includeurl AWSPuml/Storage/all.puml
+!includeurl AWSPuml/GroupIcons/all.puml
+
+!includeurl AWSPuml/ApplicationIntegration/all.puml
+
+@enduml
