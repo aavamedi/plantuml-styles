@@ -52,13 +52,6 @@ skinparam ClassBorderColor black
 '       column1: char 11
 '}
 
-' MINDMAP
-'<style>
-'Node {
-'    LineColor sininen
-'    BackgroundColor vaaleansininen
-'}
-'</style>
 
 ' COMMON STYLES
 skinparam ArrowColor #sininen
