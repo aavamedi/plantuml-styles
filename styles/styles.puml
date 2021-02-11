@@ -31,7 +31,7 @@ skinparam ActivityBackgroundColor #haaleasininen
 skinparam ActivityDiamondBackgroundColor #haaleavihrea
 skinparam ActivityDiamondBorderColor black
 
-'SEQUENCE STYLES
+' SEQUENCE STYLES
 skinparam actorStyle awesome
 skinparam ActorBackgroundColor #vaaleansininen
 skinparam ActorBorderColor #sininen
@@ -39,7 +39,7 @@ skinparam ParticipantBackgroundColor #vaaleansininen
 skinparam ParticipantBorderColor #sininen
 skinparam SequenceLifeLineBorderColor black
 
-'DATAMODEL
+' DATAMODEL
 !define table(x) class x << (T,#sininen) >> 
 !define view(x) class x << (V,#vaaleansininen) >>
 skinparam classarrowcolor gray
@@ -52,7 +52,15 @@ skinparam ClassBorderColor black
 '       column1: char 11
 '}
 
-'COMMON STYLES
+' MINDMAP
+<style>
+Node {
+    LineColor sininen
+    BackgroundColor vaaleansininen
+}
+</style>
+
+' COMMON STYLES
 skinparam ArrowColor #sininen
 skinparam Shadowing false
 skinparam NoteBackgroundColor white
