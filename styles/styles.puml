@@ -20,6 +20,19 @@ skinparam ActivityBackgroundColor #c7e7f4
 skinparam ActivityDiamondBackgroundColor #e9f4d4
 skinparam ActivityDiamondBorderColor black
 
+'DATAMODEL
+!define table(x) class x << (T,#239ed5) >> 
+!define view(x) class x << (V,#93d4f1) >>
+skinparam classarrowcolor gray
+skinparam ClassBackgroundColor white
+skinparam ClassBorderColor black
+
+' usage:
+'  table(example) {
+'       id: int <<pk>>
+'       column1: char 11
+.}
+
 'COMMON STYLES
 skinparam ArrowColor #1f9ad7
 skinparam Shadowing false
