@@ -20,6 +20,14 @@ skinparam ActivityBackgroundColor #c7e7f4
 skinparam ActivityDiamondBackgroundColor #e9f4d4
 skinparam ActivityDiamondBorderColor black
 
+'SEQUENCE STYLES
+skinparam actorStyle awesome
+skinparam ActorBackgroundColor #93d4f1
+skinparam ActorBorderColor #239ed5
+skinparam ParticipantBackgroundColor #93d4f1
+skinparam ParticipantBorderColor #239ed5
+skinparam SequenceLifeLineBorderColor black
+
 'DATAMODEL
 !define table(x) class x << (T,#239ed5) >> 
 !define view(x) class x << (V,#93d4f1) >>
