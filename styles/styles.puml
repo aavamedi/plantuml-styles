@@ -1,0 +1,22 @@
+@startuml
+
+skinparam TitleFontSize 30
+skinparam TitleFontColor #1f9ad7
+skinparam SwimlaneTitleFontSize 20
+skinparam SwimlaneTitleBackgroundColor #1f9ad7
+skinparam SwimlaneTitleFontColor white
+skinparam SwimlaneBorderThickness 1
+
+skinparam ActivityBorderColor black
+skinparam ActivityBackgroundColor #c7e7f4
+
+skinparam ArrowColor #1f9ad7
+skinparam Shadowing false
+skinparam NoteBackgroundColor white
+skinparam NoteBorderColor black
+skinparam ActivityDiamondBackgroundColor #e9f4d4
+skinparam ActivityDiamondBorderColor black
+
+header '<img:https://www.aava.fi/sites/default/files/field_data/page/Aava_pystylogo_cmyk.jpg{scale=0.1}>
+
+@enduml
