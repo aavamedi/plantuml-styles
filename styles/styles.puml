@@ -31,7 +31,7 @@ skinparam ClassBorderColor black
 '  table(example) {
 '       id: int <<pk>>
 '       column1: char 11
-.}
+'}
 
 'COMMON STYLES
 skinparam ArrowColor #1f9ad7
