@@ -38,6 +38,7 @@ skinparam ActorBorderColor #sininen
 skinparam ParticipantBackgroundColor #vaaleansininen
 skinparam ParticipantBorderColor #sininen
 skinparam SequenceLifeLineBorderColor black
+skinparam SequenceGroupBackgroundColor sininen
 
 ' DATAMODEL
 !define table(x) class x << (T,#sininen) >> 
