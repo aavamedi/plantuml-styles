@@ -15,4 +15,6 @@
 
 !includeurl AWSPuml/ApplicationIntegration/all.puml
 
+!includeurl AWSPuml/ManagementAndGovernance/all.puml
+
 @enduml
