@@ -53,11 +53,19 @@ skinparam ClassBorderColor black
 '       column1: char 11
 '}
 
+' USECASE
+skinparam UsecaseBackgroundColor vaaleanvihrea
+skinparam UsecaseBorderColor vihrea
+
+' RECTANGLE
+skinparam RectangleBackgroundColor vaaleansininen
 
 ' COMMON STYLES
 skinparam ArrowColor #sininen
 skinparam Shadowing false
 skinparam NoteBackgroundColor white
 skinparam NoteBorderColor black
+skinparam nodesep 16
+skinparam ranksep 32
 
 @enduml
