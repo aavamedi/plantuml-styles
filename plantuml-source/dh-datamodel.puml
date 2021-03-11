@@ -1,0 +1,3032 @@
+@startuml
+
+!define table(x) class x << (T,lightblue) >>
+!define view(x) class x << (V,lightblue) >>
+!define tr(x) class x << (R,red) >>
+!define tf(x) class x << (F,darkorange) >>
+!define af(x) class x << (F,white) >>
+!define fn(x) class x << (F,plum) >>
+!define fs(x) class x << (F,tan) >>
+!define ft(x) class x << (F,wheat) >>
+!define if(x) class x << (F,gaisboro) >>
+!define p(x) class x << (P,indianred) >>
+!define pc(x) class x << (P,lemonshiffon) >>
+!define x(x) class x << (P,linen) >>
+
+hide methods
+hide stereotypes
+skinparam classarrowcolor gray
+skinparam ClassBackgroundColor white
+skinparam ClassBorderColor black
+skinparam ArrowColor black
+skinparam Shadowing false
+'top to bottom direction
+left to right direction
+
+table(aika) {
+	PTR: int <<pk>>
+	HT: char 11
+	HOITOKETJU_NRO: int
+        RNRO: smallint
+	PVM: int
+	KLO: int
+	VALI: int
+	LKRI: char4
+	ETNS: char4
+	LAJI: char4
+	TOIMIPISTE: char 5
+}
+/'
+table(aika_log) {
+	PTR int <<pk>>
+	HT: char 11
+	HOITOKETJU_NRO: int
+	LKRI: char 4
+}
+'/
+/'	tyhjä taulu
+table(aikaseuranta) {
+	PTR: int <<pk>>
+	HT: char 11
+	LKRI: char 4
+}
+'/
+table(ajoktod_erikl) {
+	PTR: int <<pk>>
+	HT: char 11
+	LKR: char 4
+}
+
+table(ajoktod_silma_erikl) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+
+table(ajokyky_esi) {
+	PTR: int <<pk>>
+	HT: char 11
+	LKRI: char 4
+}
+
+table(ajoterv_ilmo) {
+	PTR: int <<pk>>
+	HT: char 11
+	LKRI: char 4
+}
+
+table(ajotod_laajennettu) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+
+table(ajtod) {
+	PTR: int <<pk>>
+	HT: char 11
+	LKR: char 4
+}
+/'	tyhjiä tauluja
+table(alarm) {
+	PTR: int <<pk>>
+	LKRI: char 4
+}
+table(alarmrec) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(alennus) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(aleryhma) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(altiste) {
+	PTR: int <<pk>>
+}
+table(altisteet) {
+	PTR: int <<pk>>
+}
+'/
+/'	tarkista
+table(alueet) {
+	PTR: int <<pk>>
+}
+'/
+
+table(aluhinta) {
+	PTR: int <<pk>>
+	KOODI: char 7
+}
+
+
+table(anamnesi) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+/'
+table(anamnesi_bak) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+'/
+table(annosohjeet) {
+	PTR: int <<pk>>
+	LKRI: char 4
+}
+
+/' tarkista
+table(asema) {
+	PTR: int <<pk>>
+}
+'/
+
+table(asiakas) {
+	PTR: int <<pk>>
+	Y_TUNNUS: char 11
+}
+/'	tyhjiä tauluja
+table(asiakas_tilit) {
+	PTR: int <<pk>>
+}
+
+
+table(asiakasryhmatunnukset) {
+	PTR: int <<pk>>
+}
+'/
+/'	tarkista
+table(asryhmat) {
+	PTR: int <<pk>>
+}
+'/
+
+table(atc_luokitus) {
+	PTR: int <<pk>>
+}
+
+
+table(atodist) {
+	PTR: int <<pk>>
+	HT: char 11
+	HOITOKETJU_NRO: int
+	LKR: char 4
+}
+/'
+table(audit) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+'/
+/'
+table(avoin_liitelomake) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+'/
+
+table(blausunto1) {
+	PTR: int <<pk>>
+	HT: char 11
+	HOITOKETJU_NRO: int
+	SIIRTOTIEDOT: varchar 100
+}
+
+table(blausunto2) {
+	PTR: int <<pk>>
+	HT: char 11
+	HOITOKETJU_NRO: int
+}
+
+/'
+table(cdaasetus) {
+	PTR: int <<pk>>
+}
+'/
+
+table(cdalahete) {
+	PTR: int <<pk>>
+	SOTU: char 11 <<fk>>
+	LKRI: char 4 <<fk>>
+}
+
+table(cdaloki) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+
+/'	tyhjä taulu
+table(clsnto) {
+	PTR: int <<pk>>
+	HT: char 11
+	HOITOKETJU_NRO: int
+	LKR: char 4
+}
+'/
+/'
+table(comconsent) {
+	PTR: int <<pk>>
+}
+table(compatientwill) {
+	PTR: int <<pk>>
+}
+'/
+/'	tyhjiä tauluja
+table(ekg_ras) {
+	PTR: int <<pk>>
+	HT: char 11
+	HOITOKETJU_NRO: int
+	LKR: char 4
+}
+
+table(elausunto) {
+	PTR: int <<pk>>
+	HT: char 11
+	HOITOKETJU_NRO: int
+	LKR: char 4
+}
+'/
+
+table(email) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+/' tyhjiä tauluja
+table(endoskopiat) {
+	PTR: int <<pk>>
+	HT: char 11
+	HOITOKETJU_NRO: int
+}
+table(ennakko) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+'/
+/'
+table(epreprescriptionprofessional) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(epreprescriptionprofessionalrestriction) {
+	PTR: int <<pk>>
+}
+'/
+
+table(epreprescriptionrenewal) {
+	PTR: int <<pk>>
+	HTUN: char 11
+	AUTHOR: varchar 6
+}
+/'
+table(EPRePresMessageAck) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(eres_cda_dokumentit) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(eres_koodistot) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(eres_logi) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(eres_lt_erillisselvitys) {
+	PTR: int <<pk>>
+	YKSILOINTITUNNUS: char 13
+}
+'/
+/'
+table(eres_lt_erillisselvitys_historia) {
+	PTR: int <<pk>>
+	YKSILOINTITUNNUS: char 13
+}
+'/
+/'
+table(eres_lt_fraasit) {
+	PTR: int <<pk>>
+	YKSILOINTITUNNUS: char 13
+}
+'/
+/'
+table(eres_lt_laake) {
+	PTR: int <<pk>>
+	YKSILOINTITUNNUS: char 13
+}
+'/
+/'
+table(eres_lt_laake_historia) {
+	PTR: int <<pk>>
+	YKSILOINTITUNNUS: char 13
+}
+'/
+/'
+table(eres_lt_vaikuttava_aine) {
+	PTR: int <<pk>>
+	YKSILOINTITUNNUS: char 13
+}
+'/
+/'
+table(eres_lt_vaikuttava_aine_historia) {
+	PTR: int <<pk>>
+	YKSILOINTITUNNUS: char 13
+}
+'/
+
+table(eres_maaraykset) {
+	PTR: int <<pk>>
+	ERES_ID: varchar 60
+	HT: char 11
+	ATC_KOODI: char 9
+	YKSILOINTITUNNUS: char 13
+	MITATOINNIN_TYYPPI: int
+	HOITOKETJU_NRO: int
+}
+
+
+table(eres_maaraykset_muutos) {
+	PTR: int <<pk>>
+	ERES_ID: varchar 60
+	HT: char 11
+}
+
+/'
+table(eres_muut_valmisteet) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(eres_seokset) {
+	PTR: int <<pk>>
+}
+'/
+/'	tyhjä taulu
+table(eres_uusimis_oikeudet) {
+	PTR: int <<pk>>
+}
+'/
+
+table(eres_uusimispyynnot) {
+	PTR: int <<pk>>
+	HT: char 11
+	LKRI: char 4
+}
+
+
+table(eres_vaikuttavat_aineet) {
+	PTR: int <<pk>>
+	ERES_ID: varchar 60
+	ATC_KOODI: char 9
+}
+
+/'
+table(eres_versiot) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(eres_vrk_toimikortti) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(erihinta) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(erikala) {
+	PTR: int <<pk>>
+}
+'/
+
+table(erikalan_lkrin_lsnto) {
+	PTR: int <<pk>>
+	HT: char 11
+	LKR: char 4
+}
+
+
+table(erikalat) {
+	PTR: int <<pk>>
+	KD: char 4
+	ALA: char 35
+}
+
+/'	tyhjä taulu
+table(erikoisalamaxkaynnit) {
+	PTR: int <<pk>>
+}
+
+
+table(erillinen_asiakirja) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+'/
+/'
+table(extkayttajat) {
+	PTR: int <<pk>>
+}
+'/
+
+table(extoikeudet) {
+	PTR: int <<pk>>
+}
+
+/'	tyhjä taulu
+table(exttiedostot) {
+	PTR: int <<pk>>
+}
+'/
+
+table(form_service_certificates) {
+	PTR: int <<pk>>
+	HT: char 11
+	LKRI: char 4
+}
+
+/'
+table(fraasit) {
+	PTR: int <<pk>>
+}
+'/
+table(ftkaynnit) {
+	PTR: int <<pk>>
+	LKRI: char 4
+}
+/'
+table(ftkuvat) {
+	PTR: int <<pk>>
+}
+'/
+
+table(fttekstit) {
+	PTR: int <<pk>>
+	LKRI: char 4
+}
+
+table(fysioterapia) {
+	PTR: int <<pk>>
+	SOTU: char 11 <<fk>>
+	HOITOKETJU_NRO: int
+}
+
+/'
+table(gdpr_log_yyyymm) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+table(gdpr_logi) {
+	PTR: int <<pk>>
+	HT: varchar 100
+}
+'/
+/'
+table(gmssqlfile) {
+}
+'/
+/'	tyhjä taulu
+table(gstatus) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+'/
+/'
+table(hampaat) {
+	PTR: int <<pk>>
+}
+'/
+/'	tyhjiä tauluja
+table(hansel_puitesopimus) {
+	PTR: int <<pk>>
+}
+
+
+table(hansel_sopimus) {
+	PTR: int <<pk>>
+}
+
+
+table(hansel_tuotekoodit) {
+	PTR: int <<pk>>
+}
+'/
+
+table(hetut_rokotus) {
+	HT: char 11
+}
+
+/'	tyhjä taulu
+table(hilmo) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+'/
+/'
+table(hilmo_topi_rekisteri) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(hkoodit) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(hloryhma) {
+	PTR: int <<pk>>
+}
+'/
+/' tyhjiä tauluja
+table(hoitoilmoitus) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+
+table(hoitoilmoitus_era) {
+	PTR: int <<pk>>
+}
+
+
+table(hoitoilmoitus_lahetys) {
+	PTR: int <<pk>>
+}
+'/
+table(hoitoketju) {
+	PTR: int <<pk>>
+	HOITOKETJU_NRO: int
+	HT: char 11
+}
+/'	tyhjiä tauluja
+table(hoitovastuu) {
+	PTR: int <<pk>>
+	HOITOKETJU_NRO: int
+}
+table(hs_aika) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+table(hs_ajanvaraus) {
+	PTR: int <<pk>>
+}
+table(hs_an_esitiedot) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+table(hs_avlahete) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+table(hs_esitiedot) {
+	PTR: int <<pk>>
+	HT: char 11
+	LKRI: char 4
+}
+table(hs_guidlist) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+table(hs_hoitokortti) {
+	PTR: int <<pk>>
+	HT: char 11
+	HOITOKETJU_NRO: int
+}
+table(hs_koodit) {
+	PTR: int <<pk>>
+}
+table(hs_laakejako) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+table(hs_lahete) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+table(hs_laitevaraukset) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+table(hs_laitteet) {
+	PTR: int <<pk>>
+}
+table(hs_logi) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+table(hs_notes) {
+	PTR: int <<pk>>
+}
+table(hs_osastot) {
+	PTR: int <<pk>>
+}
+table(hs_resursointi) {
+	PTR: int <<pk>>
+}
+table(hs_saikuume) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+table(hs_sailaake) {
+	PTR: int <<pk>>
+	HT: char 11
+	LKRI: char 4
+}
+table(hs_salisuljettu) {
+	PTR: int <<pk>>
+}
+table(hs_styles) {
+	PTR: int <<pk>>
+}
+table(hs_tekstit) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+table(hs_toimenpide) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+table(hs_vuodepaikat) {
+	PTR: int <<pk>>
+}
+table(hs_vuodevaraus) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+table(hstatus) {
+	PTR: int <<pk>>
+	HT: char 11
+	LKRI: char 4
+}
+table(htekstit) {
+	PTR: int <<pk>>
+	HT: char 11
+	LKRI: char 4
+}
+'/
+table(hukat) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+
+/'	tyhjä taulu
+table(huoltotauko) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(huonenro) {
+	PTR: int <<pk>>
+}
+table(huonetunnukset) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(iah) {
+	PTR: int <<pk>>
+}
+'/
+
+table(icd10) {
+	PTR: int <<pk>>
+	KOODI: char 6
+	AST: char 1
+	KOODI_2: char 6
+	THL_KOODI: char 13
+}
+
+
+table(icd10omat) {
+	PTR: int <<pk>>
+	LKRI: char 4
+}
+
+/'
+table(icdlnk) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(icdtxt) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(icpc2) {
+	PTR: int <<pk>>
+}
+'/
+/'	tyhjiä tauluja
+table(ienrajat) {
+	PTR: int <<pk>>
+	HT: char 11
+	LKRI: char 4
+}
+
+table(init) {
+	PTR: int <<pk>>
+}
+
+
+table(inn_laakeaineet) {
+	PTR: int <<pk>>
+}
+'/
+/'	ei relevantti taulu
+table(iplogi) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+'/
+/' tyhjiä tauluja
+' irtosolu ei tyhjä tuotannossa
+table(irtosolu) {
+	PTR: int <<pk>>
+	HETU: char 11
+}
+
+
+table(ivf) {
+	PTR: int <<pk>>
+	HETU: char 11
+}
+'/
+table(ivfp) {
+	PTR: int <<pk>>
+	HETU: char 11
+}
+
+
+table(jatko_ohjeet) {
+	PTR: int <<pk>>
+	GUID: varchar 36
+	HT: char 11
+	LKRI: char 4
+}
+
+table(jatko_ohjerivit) {
+	PTR: int <<pk>>
+	GUID: varchar 36
+}
+
+
+table(jono) {
+	PTR: int <<pk>>
+	HT: char 11
+	LKRI: char 4
+}
+
+
+table(jyhtiot) {
+	PTR: int <<pk>>
+}
+
+/'
+table(kalenteri) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(kassatns) {
+	PTR: int <<pk>>
+}
+'/
+/'	tyhjiä tauluja
+table(kauttakulku) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+
+
+table(kauttakulkuaineistot) {
+	PTR: int <<pk>>
+}
+'/
+
+table(kaynnit) {
+	PTR: int <<pk>>
+	HT: char 11
+	HOITOKETJU_NRO: int
+}
+
+
+table(kayttotarkoitus) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+/'
+table(kelasv) {
+	PTR: int <<pk>>
+}
+'/
+table(kertomusdiagnoosit) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+/'
+table(kertomusdiagnoosit_x) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+'/
+/'
+table(KERTOMUSROKOTUS) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+
+
+table(kertomustekijat) {
+	PTR: int <<pk>>
+}
+'/
+
+table(kertomustekstit) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+/'	tyhjiä tauluja
+table(kertomustmp) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+
+
+table(kertomustmp_x) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+
+
+table(kihi_alennus) {
+	PTR: int <<pk>>
+}
+
+
+table(kihi_alennusrivit) {
+	PTR: int <<pk>>
+}
+
+
+table(kihi_ohitettavat) {
+	PTR: int <<pk>>
+}
+
+
+table(kiinnost) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(kirje) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(kkoodi) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(klista) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(klkumppani) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(klmuunnos) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(konseptit) {
+	PTR: int <<pk>>
+}
+'/
+table(konsult) {
+	PTR: int <<pk>>
+	HT: char 11
+	LY_TUNNUS: char 11
+	HOITOKETJU_NRO: int
+}
+/' tyhjä taulu
+table(kontekstinvaihto) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+'/
+/'
+table(koodit) {
+	PTR: int <<pk>>
+}
+'/
+/'	tyhjä taulu
+table(korttimaksut) {
+	PTR: int <<pk>>
+}
+'/
+table(korvaava_tyo) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+/'
+table(kptns) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(ktasma) {
+	PTR: int <<pk>>
+}
+'/
+/'	tyhjiä tauluja
+table(kunta) {
+	PTR: int <<pk>>
+}
+table(kuntoutuja) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+table(kuntoutujan_kurssit) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+table(kuntoutuksen_tilat) {
+	PTR: int <<pk>>
+}
+table(kuntoutuskurssi) {
+	PTR: int <<pk>>
+}
+table(kuntoutuskurssin_jaksot) {
+	PTR: int <<pk>>
+}
+'/
+
+table(kuolintodistus) {
+	PTR: int <<pk>>
+	HT: char 11
+	HOITOKETJU_NRO: int
+}
+
+/'	tyhjä taulu, ei tyhjä tuotannossa
+table(kuulo) {
+	PTR: int <<pk>>
+	HT: char 11
+	HOITOKETJU_NRO: int
+	LKR: char 4
+}
+'/
+/'
+table(kuvankatselu) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(kuvatieto) {
+	PTR: int <<pk>>
+	HT: char 11
+	LKRI: char 4
+}
+'/
+/'
+table(kuvaus) {
+	PTR: int <<pk>>
+}
+'/
+/'	tyhjiä tauluja
+table(kyselypohjat) {
+	PTR: int <<pk>>
+}
+
+table(kyselyvastaukset) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+'/
+/'
+table(laajuus) {
+	PTR: int <<pk>>
+}
+'/
+table(laakari) {
+	PTR: int <<pk>>
+	LAAKARI: char 30
+	SOTU: char 4 <<fk>>
+	HT: char 11 <<fk>>
+}
+
+/'	tyhjiä tauluja
+table(laakari_kp_ryhma) {
+	PTR: int <<pk>>
+	LKR: char 4
+}
+'/
+/'
+table(laakari_log) {
+	PTR: int <<pk>>
+	SOTU: char 4 <<fk>>
+	HT: char 11 <<fk>>
+}
+'/
+/'	tyhjä taulu
+table(laakari_profiilikuvat) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(laakedata) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(laakkeet) {
+	PTR: int <<pk>>
+	LAAKE: char 12
+}
+'/
+/'	tyhjä taulu, ei tyhjä tuotannossa
+table(lablah) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(labse) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(labtarra) {
+	PTR: int <<pk>>
+}
+'/
+
+table(lahete) {
+	PTR: int <<pk>>
+	HT: char 11
+	HOITOKETJU_NRO: int
+	LKRI: char 4 <<fk>>
+}
+
+/' tyhjä taulu
+table(lahetevaraus) {
+	PTR: int <<pk>>
+}
+'/
+
+table(lahiomainen) {
+	PTR: int <<pk>>
+	HT: char 11
+	LAHOMAISENHT: char 11
+	NIMI: char 40
+	LAHIOSOITE: char 30
+	POSTINUMERO: int
+	POSTITOIMIPAIKKA: char 30
+	PUHELINNRO: char 20
+	SAHKOPOSTIOSOITE: char 100
+}
+
+/'	tyhjiä tauluja
+table(laite) {
+	PTR: int <<pk>>
+}
+
+
+table(laskun_lisatiedot) {
+	PTR: int <<pk>>
+}
+'/
+
+table(laskusv) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+
+
+table(laskut) {
+	PTR: int <<pk>>
+	HT: char 11
+	HOITOKETJU_NRO: int
+	LKRI: char 4
+}
+
+table(laskutuslupa) {
+	PTR: int <<pk>>
+	HT: char 11
+	HOITOKETJU_NRO: int
+	LKRI: char 4 <<fk>>
+}
+
+table(lasrivituonti) {
+	PTR: int <<pk>>
+	HT: char 11 <<fk>>
+	LKRI: char 4 <<fk>>
+}
+
+table(lausunto) {
+	PTR: int <<pk>>
+	HT: char 11 <<fk>>
+	HOITOKETJU_NRO: int
+	LAH_PVM: int
+	KUVAUS_PVM: int
+	LKRI: char 4 <<fk>>
+}
+
+table(lausunto_laakkeet) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+
+table(lausunto_siirto) {
+	HT: char 11 <<fk>>
+	LKRI: char 4 <<fk>>
+    }
+
+table(lausunto_uusi) {
+	HT: char 11 <<fk>>
+	HOITOKETJU_NRO: int
+	LKRI: char 4 <<fk>>
+}
+
+table(lisatiedot) {
+	PTR: int <<pk>>
+	HT: char 11 <<fk>>
+	LKRI: char 4 <<fk>>
+}
+
+table(llahete) {
+	PTR: int <<pk>>
+	HT: char 11 <<fk>>
+}
+
+/'
+table(llogi) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+'/
+/'
+table(logi) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+'/
+/'
+table(lomaketunnisteparit) {
+	PTR: int <<pk>>
+	PVM_XXX: int
+	KLO_XXX: int
+}
+
+
+table(lpotilas) {
+	PTR: int <<pk>>
+	HT: char 11
+	LKR: char 4
+}
+'/
+table(lryhmat) {
+	PTR: int <<pk>>
+}
+/'
+table(lsesto) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(luottohyvitykset) {
+	PTR: int <<pk>>
+}
+
+table(luottopaatokset) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(luovaxml) {
+	PTR: int <<pk>>
+}
+'/
+table(luovutusloki) {
+	PTR: int <<pk>>
+	HT: char 11
+	HOITOKETJU_NRO: int
+}
+
+/'
+table(luovutusrekisteri) {
+	PTR: int <<pk>>
+	HETU: char 30
+}
+'/
+
+table(luovutusrivi) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+
+/'	tyhjä taulu
+table(m1lahete) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+'/
+
+table(maksusit) {
+	PTR: int <<pk>>
+	HT: char 11
+	HOITOKETJU_NRO: int
+	MSITLUOKITUS: char 12
+	MSIT_VASTAANOTTAJA: char 3
+	KIIREELLINEN: tinyint
+}
+
+table(maksut) {
+	PTR: int <<pk>>
+	HT: char 11
+	HOITOKETJU_NRO: int
+}
+
+/'
+table(marevan) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+table(marevan_annos) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+'/
+
+table(matkakorvaus) {
+	PTR: int <<pk>>
+	HOITOKETJU_NRO: int
+	HT: char 11
+	LKR: char 4
+}
+
+
+table(mbokuit) {
+	PTR: int <<pk>>
+	HT: char 11
+	LKRI: char 4
+}
+/'
+table(menut) {
+	PTR: int <<pk>>
+	text varchar 255
+}
+'/
+
+table(merimiestark) {
+	PTR: int <<pk>>
+	HT: char 11
+	HOITOKETJU_NRO: int
+}
+
+/'
+table(minimilaskutus) {
+	PTR: int <<pk>>
+}
+'/
+
+table(mittaus) {
+	PTR: int <<pk>>
+	TNS: char 8
+	RYHMA: char 10
+	TEKSTI: varchar 50
+	KOODI: char 7
+}
+/'	tyhjä taulu
+table(mlogi) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+'/
+table(muistio) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+/'
+table(muunnos) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(muutri) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+'/
+/'
+table(mviite) {
+	PTR: int <<pk>>
+}
+'/
+
+table(nakos) {
+	PTR: int <<pk>>
+	HT: char 11
+	HOITOKETJU_NRO: int
+	LKR: char 4
+}
+
+/'	tyhjä taulu
+table(nakoseula) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+'/
+
+table(netlaak) {
+	PTR: int <<pk>>
+	LKRI: char 4
+}
+
+/'
+table(nrot) {
+}
+'/
+/'
+table(numerot) {
+	PTR: int <<pk>>
+}
+'/
+
+table(nuortervtod) {
+	PTR: int <<pk>>
+	HT: char 11
+	LKR: char 4
+}
+/'
+table(ohjaukset) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(ohjelmat) {
+	PTR: int <<pk>>
+}
+'/
+
+table(omaloma) {
+	PTR: int <<pk>>
+	HT: char 11 <<fk>>
+	HOITOKETJU_NRO: int
+	LKRI: char 4 <<fk>>
+}
+
+table(omalomp) {
+	PTR: int <<pk>>
+	LKRI: char 4
+}
+
+table(oryhma) {
+	PTR: int <<pk>>
+}
+
+
+table(osastot) {
+	PTR: int <<pk>>
+}
+
+/'	tyhjiä tauluja
+table(ovum) {
+	PTR: int <<pk>>
+	HETU: char 11
+}
+
+
+table(paatoksentuki_tulokset) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+'/
+
+
+table(palkkiot) {
+	PTR: int <<pk>>
+	KOODI: char 7
+	TUNNUS: char 4
+}
+
+/'	tyhjä taulu
+table(palveluseteli) {
+	PTR: int <<pk>>
+	HT: char 11
+	HOITOKETJU_NRO: int
+}
+'/
+
+table(palvelutapahtumat) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+
+
+table(papa) {
+	PTR: int <<pk>>
+	HETU: char 11
+}
+/'	tyhjä taulu
+table(pdf_arkistointi_loki) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+'/
+/'
+table(perinta) {
+	PTR: int <<pk>>
+}
+'/
+table(peruutus) {
+	PTR: int <<pk>>
+	HT: char 11 <<fk>>
+	LKRI: char 4 <<fk>>
+}
+
+table(pkonseptit) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+/'
+table(pnro) {
+	PTR: int <<pk>>
+}
+'/
+/'	tyhjä taulu
+table(postit) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+'/
+/'
+table(postitmp) {
+	PTR: int <<pk>>
+}
+'/
+/'	tyhjä taulu
+table(potilaan_tietojensiirrot) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+'/
+/'
+table(profiili) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(pvmt) {
+	PTR: int <<pk>>
+}
+'/
+
+table(rad_tutkimus) {
+	PTR: int <<pk>>
+	GUID: varchar 36
+	KUV_PVM: int
+	LAUS_TEKSTI: text
+	LNTO_POTILAALLE_NETISSA: tinyint
+}
+/'
+table(rajat) {
+	PTR: int <<pk>>
+}
+'/
+table(raksop_rivit) {
+	PTR: int <<pk>>
+}
+
+table(refr) {
+	PTR: int <<pk>>
+	HT: char 11
+	HOITOKETJU_NRO: int
+	TEKSTI: text
+}
+
+table(rekist) {
+	PTR: int <<pk>>
+	NIMI: char 40
+	HT: char 11
+	OSOITE: char 30
+	POSTNRO: int
+	PAIKKA: char 30
+	SUUNTA: char 4
+	NUMERO: char 8
+	LHT: char 11
+	LKRI: char 4
+	R_SALLII: char 1
+	TTH_SALLII: char 1
+	P_SALLII: char 1
+	MAKSUHAIRIO_PVM: int
+	MAKSUHAIRIO_HLO: char 4
+	AV_SMS_LUPA: char 1
+	KELAKORTTI_GUID: varchar 36
+}
+
+
+/'
+table(rekist_log) {
+	PTR: int <<pk>>
+	HT: char 11
+	LHT: char 11
+	LKRI: char 4
+}
+'/
+table(rekist_medicity) {
+	PTR: int <<pk>>
+	HT: char 11
+	LKRI: char 4
+}
+/'
+table(rekisterinpitajarekisteri) {
+	PTR: int <<pk>>
+}
+'/
+
+table(rekistp) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+/'
+table(rekistpoistetut) {
+	PTR: int <<pk>>
+	HT: char 11
+	LKRI: char 4
+}
+'/
+
+table(reseptit) {
+	PTR: int <<pk>>
+	HT: char 11
+	HOITOKETJU_NRO: int
+	LKR: char 4
+}
+
+/'	tyhjä taulu
+table(resurssi) {
+	PTR: int <<pk>>
+}
+'/
+
+table(riskitiedot) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+/'
+table(rislaite) {
+	PTR: int <<pk>>
+}
+'/
+
+table(rokote) {
+	PTR: int <<pk>>
+	ROKOTE: char 40
+}
+
+
+table(rokotus) {
+	PTR: int <<pk>>
+	HT: char 11
+	ROKOTE: char 40
+}
+
+/' tyhjiä tauluja
+table(rx) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+
+table(rx0) {
+	PTR: int <<pk>>
+}
+
+
+table(rx1) {
+	PTR: int <<pk>>
+}
+
+table(rx2) {
+	PTR: int <<pk>>
+}
+
+table(rx3) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(ryhlask) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(ryhma) {
+	PTR: int <<pk>>
+}
+'/
+/'	tyhjä taulu
+table(ryhma_hintamuutos) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(ryhmat) {
+	PTR: int <<pk>>
+}
+'/
+table(ryhos) {
+	PTR: int <<pk>>
+	HETU: char 11
+}
+
+/'
+table(s_kansio) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+'/
+table(s_otsikko) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+/'
+table(s_pkansio) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(s_potsikko) {
+	PTR: int <<pk>>
+}
+'/
+table(s_tieto) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+/' tyhjiä tauluja
+table(sai_aika) {
+	PTR: int <<pk>>
+	LKRI: char 4 <<fk>>
+}
+table(saihoi) {
+	PTR: int <<pk>>
+	HT: char 11
+	HOITOKETJU_NRO: int
+}
+table(saikuume) {
+	PTR: int <<pk>>
+}
+table(sailaake) {
+	PTR: int <<pk>>
+	LKRI: char 4 <<fk>>
+}
+table(sailah) {
+	PTR: int <<pk>>
+	HT: char 11 <<fk>>
+	HOITOKETJU_NRO: int
+}
+table(saiosa) {
+	PTR: int <<pk>>
+}
+table(saiosh) {
+	PTR: int <<pk>>
+}
+'/
+
+table(sairaus) {
+	PTR: int <<pk>>
+	HT: char 11 <<fk>>
+	HOITOKETJU_NRO: int
+	PVM: int
+	KLO: int
+	KOODI: char 7
+	LKRI: char 4 <<fk>>
+	ETNS: char 4
+	GUID: varchar 36
+	PAANAKYMA: char 10
+}
+
+/'
+table(sairaus_hsy) {
+	PTR: int <<pk>>
+	HT: char 11
+	LKRI: char 4
+}
+'/
+/'
+table(sairaus_muutettavat) {
+	ptr: int <<pk>
+}
+'/
+
+table(sairaus_sairaalalähetteet) {
+	PTR: int <<pk>>
+	HT: char 11 <<fk>>
+	LKRI: char 4 <<fk>>
+}
+
+table(sairauslomasiirto_aineisto) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+/'
+table(sairauslomasiirto_konversiot) {
+	PTR: int <<pk>>
+}
+'/
+table(sairauslomasiirto_liittyma) {
+	PTR: int <<pk>>
+	HT tinyint
+}
+
+/' tyhjiä tauluja
+table(sairuoka) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+table(saisanelu) {
+	PTR: int <<pk>>
+	LKRI: char 4
+}
+table(saisop) {
+	PTR: int <<pk>>
+	HT: char 11
+	LKRI: char 4
+}
+table(saisopr) {
+	PTR: int <<pk>>
+}
+table(saitdi) {
+	PTR: int <<pk>>
+}
+table(saitmp) {
+	PTR: int <<pk>>
+}
+table(saitpl) {
+	PTR: int <<pk>>
+}
+table(saitpr) {
+	PTR: int <<pk>>
+}
+table(saitxt) {
+	PTR: int <<pk>>
+}
+table(saityolista) {
+	PTR: int <<pk>>
+	LKRI: char 4
+}
+table(saivuode) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+table(sali) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+'/
+/'
+table(sanomavirheet) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(savefile) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+'/
+/'
+table(shistoria) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(sijaiset) {
+	PTR: int <<pk>>
+}
+'/
+table(silmalasimaarays) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+/'
+table(skriptit) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(smaksut) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(smspohjat) {
+	PTR: int <<pk>>
+}
+'/
+/'	tyhjä taulu
+table(sntutk) {
+	PTR: int <<pk>>
+	HETU: char 11
+}
+'/
+table(sop_asemat) {
+	PTR: int <<pk>>
+	LY_TUNNUS: char 11
+	TOIMIPISTE: char 5
+}
+/'
+table(sop_mallit) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(sopimukset) {
+	PTR: int <<pk>>
+}
+'/
+table(sopimus) {
+	PTR: int <<pk>>
+}
+/'
+table(sopimus531750) {
+	PTR: int <<pk>>
+}
+table(sopimus531751) {
+	PTR: int <<pk>>
+}
+table(sopimus531751_u) {
+	PTR: int <<pk>>
+}
+'/
+
+table(sopimusehdot) {
+	PTR: int <<pk>>
+}
+/'
+table(sopimushinnat) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(sopimuspak2) {
+	PTR: int <<pk>>
+}
+'/
+table(sopimusrivit) {
+	PTR: int <<pk>>
+}
+/'
+table(SOPIMUSRYHMÄT) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(SOPIMUSRYHMÄT_PALKKIOT) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(SOPIMUSRYHMÄT2) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(sopimusvakiohinnat) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(sote_organisaatio) {
+	PTR: int <<pk>>
+	ORG_OID: varchar 60
+	NIMI: varchar 255
+	Y_TUNNUS: varchar 10
+}
+'/
+/'
+table(sote_organisaatio_tausta) {
+	PTR: int <<pk>>
+}
+'/
+/' tyhjiä tauluja
+table(sote_tuottaja) {
+	PTR: int <<pk>>
+}
+table(sote_valinta) {
+	PTR: int <<pk>>
+	HT: char 11
+	HOITOKETJU_NRO: int
+}
+'/
+/'
+table(sql_q) {
+}
+table(sql_q_haly) {
+}
+table(sql_q2) {
+}
+table(sql_q3) {
+}
+table(sqltrace) {
+	PTR: int <<pk>>
+}
+'/
+
+table(stressi) {
+	PTR: int <<pk>>
+	HETU: char 11
+}
+
+
+table(suorakorvauspaatokset) {
+	PTR: int <<pk>>
+	HT: char 11
+	LASKUNRO: int
+}
+
+table(sv3) {
+	PTR: int <<pk>>
+	HT: char 11
+	LKRI: char 4
+	LAHETE_GUIDIT: varchar 6500
+}
+
+table(sv3f) {
+	PTR: int <<pk>>
+	HT: char 11
+	HOITOKETJU_NRO: int
+}
+/'
+table(sv3sh) {
+	PTR: int <<pk>>
+	HT: char 11
+	LKR: char 4
+}
+'/
+
+table(sv4) {
+	PTR: int <<pk>>
+	HT: char 11
+	HOITOKETJU_NRO: int
+}
+/'
+table(taksa) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(tarkastus_pohja_otsikot) {
+	PTR: int <<pk>>
+}
+table(tarkastus_pohja_rivit) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(taskpanelomat) {
+	PTR: int <<pk>>
+	LKRI: char 4
+}
+'/
+/'
+table(taskpanelpohja) {
+	PTR: int <<pk>>
+}
+'/
+
+table(tekijat) {
+	PTR: int <<pk>>
+	HT: char 11
+	LY_TUNNUS: char 11
+}
+
+
+/'
+table(tekijat_log) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+'/
+
+table(tekopaikat) {
+	PTR: int <<pk>>
+	'ALUE: char 4
+	'YTNS: char 4
+	'KOODI: char 7
+	TEKOPAIKKA: char 5
+}
+/'
+table(thl_koodistot) {
+	PTR: int <<pk>>
+}
+'/
+
+table(tilastot) {
+	PTR: int <<pk>>
+}
+
+
+table(tilikaudet) {
+	PTR: int <<pk>>
+}
+
+
+table(tilit) {
+	PTR: int <<pk>>
+}
+
+
+table(tindeksi) {
+	PTR: int <<pk>>
+	HT: char 11
+	LY_TUNNUS: char 11
+}
+
+/'
+table(titmus) {
+	PTR: int <<pk>>
+	HT: char 11
+	LKR: char 4
+}
+'/
+
+table(tkind) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+
+
+table(tlausunto) {
+	PTR: int <<pk>>
+	HT: char 11
+	LKR: char 4
+}
+
+
+table(tlausuntoa) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+
+table(tlausuntob) {
+	PTR: int <<pk>>
+	HT: char 11
+	LY_TUNNUS: char 11
+}
+
+/'
+table(TODISTUKSET) {
+	PTR: int <<pk>>
+	HT: char 11
+	HOITOKETJU_NRO: int
+}
+'/
+/'
+table(toimenpide_luokitus) {
+	PTR: int <<pk>>
+}
+'/
+
+table(toimialat) {
+	PTR: int <<pk>>
+}
+/'
+table(toiminta) {
+	PTR: int <<pk>>
+}
+'/
+table(toimintasuunnitelmat) {
+	PTR: int <<pk>>
+}
+
+table(toimipaikat) {
+	PTR: int <<pk>>
+	TMP: char 5
+	NIMI: char 40
+	OSOITE: char 30
+	POSTNRO: int
+	PAIKKA: char 30
+	ORT: char 30
+}
+
+/'
+table(toistuvaislaskut) {
+	PTR: int <<pk>>
+}
+'/
+
+table(tol2008k) {
+	PTR: int <<pk>>
+}
+
+
+table(totasot) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+
+
+table(tpiste) {
+	PTR: int <<pk>>
+}
+
+
+table(tpkart) {
+	PTR: int <<pk>>
+}
+
+table(tppiste) {
+	PTR: int <<pk>>
+}
+/'
+table(tslogi) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+'/
+
+table(ttark) {
+	PTR: int <<pk>>
+	TT_GUID: varchar 36
+}
+
+
+table(ttarkht) {
+	PTR: int <<pk>>
+	HT: char 11
+	TT_GUID: varchar 36
+}
+
+table(ttarkrivit) {
+	PTR: int <<pk>>
+	TT_GUID: varchar 36
+}
+
+
+table(ttarkyri) {
+	PTR: int <<pk>>
+	LY_TUNNUS: char 11
+}
+
+
+table(tth_aspo_labkoodit) {
+	PTR: int <<pk>>
+}
+
+/'
+table(tth_pdf_kaynnit_dg) {
+	PTR: int <<pk>>
+}
+table(tth_pdf_kayttokerrat) {
+	PTR: int <<pk>>
+}
+table(tth_pdf_kayttokerroittain) {
+	PTR: int <<pk>>
+}
+table(tth_pdf_kayttokerroittain_temp) {
+	PTR: int <<pk>>
+}
+table(tth_pdf_kertomukset) {
+	PTR: int <<pk>>
+}
+table(tth_pdf_koodit) {
+	PTR: int <<pk>>
+}
+table(tth_pdf_kvartaalit) {
+	PTR: int <<pk>>
+}
+table(tth_pdf_laskutus_tapahtumat) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+table(tth_pdf_myynti_lajeittain) {
+	PTR: int <<pk>>
+}
+table(tth_pdf_poissaololuokittelu) {
+	PTR: int <<pk>>
+}
+table(tth_pdf_poissaolot_dg) {
+	PTR: int <<pk>>
+}
+table(tth_pdf_poissaolot_kesto) {
+	PTR: int <<pk>>
+}
+table(tth_pdf_tyontekijamaarat) {
+	PTR: int <<pk>>
+}
+table(tth_pdf_yhdistelefirmat) {
+	PTR: int <<pk>>
+}
+table(tth_pdf_yhdisteleosastot) {
+	PTR: int <<pk>>
+}
+table(tth_pdf_yhdistelyt) {
+	PTR: int <<pk>>
+}
+'/
+
+table(tthkela) {
+	PTR: int <<pk>>
+}
+
+table(tthkirjeet) {
+	PTR: int <<pk>>
+	LKRI: char 4
+}
+
+table(tthkirjeet_osallistujat) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+
+
+table(tthseuranta) {
+	PTR: int <<pk>>
+}
+
+
+table(tthsv111) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+
+table(tthsv98) {
+	PTR: int <<pk>>
+}
+/'
+table(tthtyypit) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(tthweblog) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(tthx_asetukset) {
+	PTR: int <<pk>>
+}
+table(tthx_ohjetekstit) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(ttkelasv) {
+	PTR: int <<pk>>
+}
+'/
+
+table(ttsiirto) {
+	PTR: int <<pk>>
+	HT: char 11
+	LY_TUNNUS: char 11
+}
+/'
+table(ttskonv) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(ttsliittyma) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(ttsmtakonv) {
+	PTR: int <<pk>>
+}
+'/
+table(Tuko) {
+	HT: char 11
+}
+
+
+table(tulos) {
+	PTR: int <<pk>>
+	HT: char 11
+	HOITOKETJU_NRO: int
+	HLO: char 4
+	L_PVM: int
+	TNS: char 8
+	PVM: int
+	VALMIS_PVM: int
+	TULOS: char 14
+	MAX: char 7
+	MIN: char 7
+	YKSIKKO: char 16
+	VIIVASTETTY_PVM: int
+	PYSYVASTI_VIIVASTETTY: tinyint
+	TEKOPAIKKA: char 5
+}
+/'
+table(tulos_hsy) {
+	PTR: int <<pk>>
+	HT nvarchar 50
+}
+'/
+table(tulos_uusin) {
+	HT: char 11
+
+}
+/'
+table(tuotepaketit) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(tutpaikat) {
+	PTR: int <<pk>>
+}
+'/
+table(tvaktod) {
+	PTR: int <<pk>>
+	HT: char 11
+	HOITOKETJU_NRO: int
+	LKR: char 4
+}
+/'
+table(tyoasemat) {
+	PTR: int <<pk>>
+}
+'/
+/'	tyhjä taulu
+table(tyokoodi) {
+	PTR: int <<pk>>
+}
+'/
+table(tyolaji) {
+	PTR: int <<pk>>
+	LAJI: char 4
+	SELOSTE: char 35
+}
+
+table(tyolajin_lisavalinnat) {
+	PTR: int <<pk>>
+	LAJI: char 4
+}
+/'
+table(tyolajin_lisval) {
+	PTR: int <<pk>>
+}
+'/
+/' tyhjä taulu
+table(tyolistan_oletusryhmat) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(tyosuhde_korjaus) {
+	PTR: int <<pk>>
+}
+'/
+/'	tyhjiä tauluja
+table(uhs) {
+	PTR: int <<pk>>
+	HETU: char 11
+}
+table(ulkoiset_numerot) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+'/
+
+table(urhtark) {
+	PTR: int <<pk>>
+	HT: char 11
+	LKR: char 4
+
+}
+
+table(vahinkotiedot) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+/'
+table(valintafraasit) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(valintalistat) {
+	PTR: int <<pk>>
+}
+'/
+table(vammaisen_pysakointilupa) {
+	PTR: int <<pk>>
+	HT: char 11
+	LKR: char 4
+}
+
+
+table(vanhat) {
+	PTR: int <<pk>>
+	HT: char 11
+
+}
+
+/'
+table(wav_asetukset) {
+	PTR: int <<pk>>
+
+}
+table(wav_auditlog) {
+	PTR: int <<pk>>
+	HETU: char 11
+}
+'/
+/'	tyhjä taulu
+table(wav_erikoisalat_tmp) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(wav_hlo) {
+	PTR: int <<pk>>
+}
+table(wav_ohjetekstit) {
+	PTR: int <<pk>>
+}
+'/
+/' tyhjiä tauluja
+table(wav_palveluntarjoajat) {
+	PTR: int <<pk>>
+}
+
+table(wav_vastaanottajat_tmp) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(wavRegistLog) {
+	PTR: int <<pk>>
+}
+'/
+/'	tyhjiä tauluja
+table(weblomakepohjat) {
+	PTR: int <<pk>>
+}
+table(weblomakkeet) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+'/
+table(veloitus) {
+	PTR: int <<pk>>
+	HT: char 11 <<fk>>
+	LKRI: char 4 <<fk>>
+}
+/'
+table(viite) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(winbutton) {
+	PTR: int <<pk>>
+}
+
+
+table(wingroup) {
+	PTR: int <<pk>>
+
+}
+
+
+table(winuser) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(vlogi) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(wsn_sql) {
+	PTR: int <<pk>>
+}
+'/
+/'	tyhjä taulu
+table(vuodepaikat) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(vuokra_ale) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(vuokrat) {
+	PTR: int <<pk>>
+}
+'/
+/'	tyhjä taulu
+table(yhteys) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(yksi) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(yksikot) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(yleisloki) {
+	PTR: int <<pk>>
+	HT: char 11
+}
+'/
+
+table(yleismak) {
+	PTR: int <<pk>>
+}
+
+/'	tyhjiä tauluja
+table(yleista) {
+	PTR: int <<pk>>
+	ALUE: char 4
+	'TMP: char 5
+	'NIMI: char 40
+	'NAMN: char 40
+	'OSOITE: char 30
+	'ADRESS: char 30
+	'POSTNRO: int
+	'POSTNBR: int
+	'PAIKKA: char 30
+	'ORT: char 30
+	'SUUNTA: char 4
+	'NUMERO: char 8
+	'FAXSUUNTA: char 4
+	'FAXNUMERO: char 8
+	LY_TUNNUS: char 11
+	'PANKKI: char 20
+	'TILINRO: char 20
+}
+
+
+table(ymportaat) {
+	PTR: int <<pk>>
+}
+'/
+
+table(yotasot) {
+	PTR: int <<pk>>
+}
+
+/'	tyhjä taulu
+table(yrajat) {
+	PTR: int <<pk>>
+}
+'/
+
+table(yrikp) {
+	PTR: int <<pk>>
+}
+
+
+table(yritmp) {
+	PTR: int <<pk>>
+}
+
+table(yritns) {
+	PTR: int <<pk>>
+	JTUNNUS: char 14
+	YTNS: char 4
+	TMP: char 5
+}
+/'
+table(yritykset) {
+	ID: varchar 50
+	NRO: float
+}
+'/
+
+table(yritys) {
+	PTR: int <<pk>>
+	NIMI: varchar 50
+	LY_TUNNUS: char 11
+	TTL: char 4
+	TTL2: char 4
+	TTH: char 4
+	TTH2: char 4
+
+}
+/'	tyhjä taulu
+table(yryhma) {
+	PTR: int <<pk>>
+}
+'/
+/'
+table(yttahot) {
+	PTR: int <<pk>>
+}
+'/
+sv3 -- rekist
+sv3f -- rekist
+yritys -- sopimus
+yritys -- asiakas
+toimipaikat -- asiakas
+toimipaikat -- yritns
+toimipaikat -- yritmp
+laakari -- asiakas
+laakari -- sairaus
+laakari -- lahete
+laakari -- jatko_ohjeet
+osastot -- asiakas
+
+kaynnit -- rekist
+aika -- rekist
+
+rekist "n" --> "1" tulos
+laakari "n" --> "1" tulos
+kertomustekstit -- rekist
+maksut -- rekist
+
+laskut -r- rekist
+lahete -- rekist
+rekist -- jatko_ohjeet
+rekist -- sairaus
+suorakorvauspaatokset -- rekist
+rekist -- tekijat
+tekijat -- yritys
+
+tyolaji -- aika
+tyolajin_lisavalinnat -- tyolaji
+aika -- laakari
+toimipaikat -- aika
+erikalat -- aika
+sop_asemat -- tekijat
+sop_asemat -- yritys
+eres_maaraykset -- rekist
+mittaus -- tulos
+lausunto -- rad_tutkimus
+lausunto -- palkkiot
+lausunto -- laakari
+rekist -- lausunto
+rekist -- veloitus
+veloitus -- laakari
+aluhinta -- palkkiot
+
+'tarkastamatta
+maksusit -- hoitoketju
+maksut -- hoitoketju
+atodist -- hoitoketju
+luovutusloki -- hoitoketju
+blausunto1 -- hoitoketju
+blausunto2 -- hoitoketju
+nakos -- hoitoketju
+omaloma -- hoitoketju
+kuolintodistus -- hoitoketju
+matkakorvaus -- hoitoketju
+lausunto_uusi -- hoitoketju
+fysioterapia -- hoitoketju
+tulos -- hoitoketju
+tvaktod -- hoitoketju
+merimiestark -- hoitoketju
+refr -- hoitoketju
+reseptit -- hoitoketju
+'aika_log -- hoitoketju
+kaynnit -- hoitoketju
+eres_maaraykset -- hoitoketju
+sairaus -- hoitoketju
+laskutuslupa -- hoitoketju
+sv4 -- hoitoketju
+lahete -- hoitoketju
+aika -- hoitoketju
+laskut -- hoitoketju
+lausunto -- hoitoketju
+
+rekist -- anamnesi
+s_otsikko -- rekist
+'logi -- rekist
+rekist -- vammaisen_pysakointilupa
+riskitiedot -- rekist
+ajotod_laajennettu -- rekist
+sairauslomasiirto_aineisto -- rekist
+s_tieto -- rekist
+'tekijat_log -- rekist
+maksusit -- rekist
+sairauslomasiirto_liittyma -- rekist
+'gdpr_logi -- rekist
+eres_uusimispyynnot -- rekist
+mbokuit -- rekist
+kayttotarkoitus -- rekist
+nuortervtod -- rekist
+tindeksi -- rekist
+atodist -- rekist
+muistio -- rekist
+luovutusloki -- rekist
+'audit -- rekist
+tkind -- rekist
+blausunto1 -- rekist
+'yleisloki -- rekist
+tlausunto -- rekist
+
+blausunto2 -- rekist
+tlausuntoa -- rekist
+tlausuntob -- rekist
+nakos -- rekist
+Tuko -- rekist
+email -- rekist
+totasot -- rekist
+omaloma -- rekist
+form_service_certificates -- rekist
+ajokyky_esi -- rekist
+ttsiirto -- rekist
+kuolintodistus -- rekist
+ajoterv_ilmo -- rekist
+lasrivituonti -- rekist
+'tslogi -- rekist
+matkakorvaus -- rekist
+ajoktod_erikl -- rekist
+sairaus_sairaalalähetteet -- rekist
+ajoktod_silma_erikl -- rekist
+'savefile -- rekist
+lausunto_uusi -- rekist
+'laakari_log -- rekist
+lausunto_laakkeet -- rekist
+tthsv111 -- rekist
+'rekist_log -- rekist
+tulos_uusin -- rekist
+palvelutapahtumat -- rekist
+'ovum -- rekist
+papa -- rekist
+'uhs -- rekist
+'irtosolu -- rekist
+'ivf -- rekist
+ivfp -- rekist
+'luovutusrekisteri -- rekist
+ryhos -- rekist
+'sntutk -- rekist
+stressi -- rekist
+'rekist -- gdpr_log_yyyymm
+rekist -- peruutus
+rekist -- tvaktod
+rekist -- hetut_rokotus
+rekist -- pkonseptit
+rekist -- hoitoketju
+rekist -- hukat
+rekist -- urhtark
+rekist -- vanhat
+rekist -- merimiestark
+rekist -- korvaava_tyo
+rekist -- refr
+'rekist -- avoin_liitelomake
+rekist -- luovutusrivi
+rekist -- rekistp
+'rekist -- kertomusdiagnoosit_x
+rekist -- reseptit
+rekist -- jono
+rekist -- erikalan_lkrin_lsnto
+rekist -- rokotus
+'rekist -- aika_log
+rekist -- ttarkht
+rekist -- lahiomainen
+rekist -- vahinkotiedot
+rekist -- lausunto_siirto
+rekist -- eres_maaraykset_muutos
+rekist -- rekist_medicity
+rekist -- laskutuslupa
+rekist -- lisatiedot
+rekist -- cdaloki
+rekist -- sv4
+rekist -- kertomusdiagnoosit
+rekist -- silmalasimaarays
+rekist -- kertomustekstit
+rekist -- laskusv
+rekist -- ajtod
+'rekist -- s_kansio
+rekist -- epreprescriptionrenewal
+rekist -- llahete
+rekist -- cdalahete
+
+laakari -- erikalan_lkrin_lsnto
+laakari -- vammaisen_pysakointilupa
+annosohjeet -- laakari
+eres_uusimispyynnot -- laakari
+mbokuit -- laakari
+nuortervtod -- laakari
+atodist -- laakari
+fttekstit -- laakari
+tlausunto -- laakari
+cdalahete -- laakari
+nakos -- laakari
+netlaak -- laakari
+omaloma -- laakari
+form_service_certificates -- laakari
+ajokyky_esi -- laakari
+omalomp -- laakari
+ajoterv_ilmo -- laakari
+lasrivituonti -- laakari
+matkakorvaus -- laakari
+ftkaynnit -- laakari
+ajoktod_erikl -- laakari
+tthkirjeet -- laakari
+sairaus_sairaalalähetteet -- laakari
+ajoktod_silma_erikl -- laakari
+lausunto_uusi -- laakari
+'rekist_log -- laakari
+peruutus -- laakari
+tvaktod -- laakari
+sv3 -- laakari
+urhtark -- laakari
+reseptit -- laakari
+jono -- laakari
+'aika_log -- laakari
+rekist_medicity -- laakari
+laskutuslupa -- laakari
+lisatiedot -- laakari
+icd10omat -- laakari
+'taskpanelomat -u- laakari
+laskut -- laakari
+ajtod -- laakari
+
+eres_vaikuttavat_aineet -- eres_maaraykset
+eres_maaraykset -- eres_maaraykset_muutos
+eres_vaikuttavat_aineet -- atc_luokitus
+tulos -- tekopaikat
+
+'altisteet -- yritys
+lryhmat -- yritys
+sairauslomasiirto_aineisto -- yritys
+s_tieto -- yritys
+'tekijat_log -- yritys
+tilastot -- yritys
+'kihi_ohitettavat -- yritys
+
+tindeksi -- yritys
+atodist -- yritys
+'titmus -- yritys
+'audit -- yritys
+tkind -- yritys
+tilikaudet -- yritns
+blausunto1 -- yritys
+tlausunto -- yritys
+toimintasuunnitelmat -- yritys
+'nakoseula -- yritys
+blausunto2 -- yritys
+tlausuntoa -- yritys
+tlausuntob -- yritys
+nakos -- yritys
+ttarkyri -- yritys
+'clsnto -- yritys
+tthseuranta -- yritys
+'ekg_ras -- yritys
+tthkirjeet_osallistujat -- yritys
+Tuko -- yritys
+'elausunto -- yritys
+toimipaikat -- yritys
+totasot -- yritys
+omaloma -- yritys
+tpiste -- yritys
+ttsiirto -- yritys
+tpkart -- yritys
+oryhma -- yritys
+lasrivituonti -- yritys
+tppiste -- yritys
+osastot -- yritys
+'luovaxml -- yritys
+matkakorvaus -- yritys
+yritys -- tthkela
+yritys -- tthkirjeet
+yritys -- sairaus_sairaalalähetteet
+yritys -- extoikeudet
+yritys -- lausunto_uusi
+yritys -- fysioterapia
+yritys -- tulos
+yritys -- tulos_uusin
+'yritys -- kyselyvastaukset
+yritys -- tvaktod
+yritys -- sv3
+yritys -- urhtark
+yritys -- vanhat
+yritys -- merimiestark
+'yritys -- aikaseuranta
+'yritys -- rx
+'yritys -- m1lahete
+yritys -- reseptit
+'yritys -- erikoisalamaxkaynnit
+yritys -- rokotus
+yritys -- ttark
+yritys -- ttarkht
+yritys -- yleismak
+yritys -- kaynnit
+'yritys -- yleista
+yritys -- ryhos
+yritys -- lausunto_siirto
+yritys -- yotasot
+yritys -- eres_maaraykset
+yritys -- yritmp
+yritys -- sairaus
+yritys -- konsult
+'yritys -- htekstit
+'yritys -- yryhma
+'yritys -- kuulo
+yritys -- tthsv98
+yritys -- yrikp
+yritys -- lahete
+yritys -- sop_asemat
+yritys -- stressi
+yritys -- lausunto
+yritys -- sv3f
+
+tilit -- yritns
+yritns -- jyhtiot
+
+sopimus -- sopimusrivit
+sopimusehdot -- sopimus
+sopimusrivit -- raksop_rivit
+laskutuslupa -- asiakas
+sairaus -- icd10
+lryhmat -- asiakas
+sairauslomasiirto_aineisto -- asiakas
+s_tieto -- asiakas
+tekijat -- asiakas
+tilastot -- asiakas
+
+tindeksi -- asiakas
+atodist -- asiakas
+'audit -- asiakas1
+tkind -- asiakas
+blausunto1 -- asiakas
+tlausunto -- asiakas
+toimintasuunnitelmat -- asiakas
+blausunto2 -- asiakas
+tlausuntoa -- asiakas
+tlausuntob -- asiakas
+nakos -- asiakas
+ttarkyri -- asiakas
+tthseuranta -- asiakas
+tthkirjeet_osallistujat -- asiakas
+Tuko -- asiakas
+totasot -- asiakas
+omaloma -- asiakas
+tpiste -- asiakas
+ttsiirto -- asiakas
+tpkart -- asiakas
+oryhma -- asiakas
+lasrivituonti -- asiakas
+tppiste -- asiakas
+matkakorvaus -- asiakas
+asiakas -- tthkela
+asiakas -- tthkirjeet
+asiakas -- sairaus_sairaalalähetteet
+asiakas -- extoikeudet
+asiakas -- lausunto_uusi
+asiakas -- fysioterapia
+asiakas -- tulos
+asiakas -- tulos_uusin
+asiakas -- tvaktod
+asiakas -- sv3
+asiakas -- urhtark
+asiakas -- vanhat
+asiakas -- merimiestark
+asiakas -- reseptit
+asiakas -- rokotus
+asiakas -- ttark
+asiakas -- ttarkht
+asiakas -- yleismak
+asiakas -- kaynnit
+asiakas -- ryhos
+asiakas -- lausunto_siirto
+asiakas -- yotasot
+asiakas -- eres_maaraykset
+asiakas -- yritmp
+asiakas -- sairaus
+asiakas -- tthsv98
+asiakas -- yrikp
+asiakas -- lahete
+asiakas -- sop_asemat
+asiakas -- stressi
+asiakas -- lausunto
+asiakas -- sv3f
+jatko_ohjeet -- jatko_ohjerivit
+rokote -- rokotus
+ttarkht -- ttarkrivit
+ttarkht -- ttark
+ttark -- ttarkrivit
+@enduml
