@@ -60,6 +60,11 @@ skinparam UsecaseBorderColor vihrea
 ' RECTANGLE
 skinparam RectangleBackgroundColor vaaleansininen
 
+' COMPONENT STYLES
+skinparam componentStyle awesome
+skinparam ComponentBorderColor #sininen
+skinparam ComponentBackgroundColor #vaaleansininen
+
 ' COMMON STYLES
 skinparam ArrowColor #sininen
 skinparam Shadowing false
