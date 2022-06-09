@@ -13,7 +13,7 @@
 !define haalealila f0cae4
 
 ' HEADER
-header '<img:https://www.aava.fi/wp-content/uploads/2022/04/Aava_logo.svg{scale=0.1}>
+'header '<img:https://www.aava.fi/wp-content/uploads/2022/04/Aava_logo.svg{scale=0.1}>
 
 ' TITLE STYLES
 skinparam TitleFontSize 30
